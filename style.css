@@ -116,9 +116,7 @@ form .input-box span.details{
    transition: all 0.3s ease;
    background: linear-gradient(135deg, #71b7e6, #9b59b6);
  }
- form .button input:hover{
-  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
-  }
+ 
  .redBorder {
   border-color: red !important; 
  }
