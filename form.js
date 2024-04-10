@@ -221,8 +221,29 @@ function formSubmitHandler(e) {
     emptyValue(conformPasswordField.value,conformPasswordField,conformPasswordWarning,"Conform Password")
     conformPasswordValid= false;
     }
-    comparePassword(conformPasswordField.value,conformPasswordField,conformPasswordWarning);
+    // comparePassword(conformPasswordField.value,conformPasswordField,conformPasswordWarning);
 
+    if(numberField.value.length < 10 && phoneValid) {
+        numberField.classList.add('redBorder');
+        numberWarning.innerHTML="Phone number should be of 10 digit";
+        phoneValid = false;
+    }
+
+    if(nameValid) {
+        if(checkSpecialCharAndNum(nameField,nameField.value,nameWarning,"Name")) nameValid=false;
+    }
+
+    if(UsernameValid) {
+        if(checkSpecialChar(usernameField,usernameField.value,usernameWarning,"Username")) UsernameValid=false;
+    }
+
+    if(phoneValid) {
+        if(!checkNumber(numberField.value,numberWarning)) phoneValid=false;
+    }
+
+    if(conformPasswordValid) {
+        if(!comparePassword(conformPasswordField.value,conformPasswordField,conformPasswordWarning)) conformPasswordValid=false;
+    }
 
     if(!phoneValid || !nameValid || !UsernameValid || !passwordValid || !conformPasswordValid || !emailValid) {
        alert("Fill the form correctly");
