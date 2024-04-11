@@ -27,7 +27,7 @@ function emptyValue(value,input,warning,message) {
 }
 
 function checkSpecialCharAndNum(input,value,warning,message) {
-    // const  regex = /^[a-zA-Z][a-zA-Z\\s]+$/;
+    //   
     // if(regex.test(value)) {
     //     input.classList.remove('redBorder');
     //    warning.innerHTML="";
@@ -164,7 +164,12 @@ function usernameChangeHandler(e) {
 function passwordChangeHandler(e) {
     const warning = document.querySelector("#passwordWarning");
     const value = e.target.value;
-    emptyValue(value,passwordField,warning,"Password");
+    if(emptyValue(value,passwordField,warning,"Password"))return;
+    if(conformPasswordField.value) {
+        const warning = document.querySelector('#conformPasswordWarning')
+        if(comparePassword(conformPasswordField.value,conformPasswordField,warning)) conformPasswordValid=true;
+        else conformPasswordValid=false;
+    }
 }
 
 function conformPasswordChangeHandler(e) {
@@ -221,7 +226,7 @@ function formSubmitHandler(e) {
     emptyValue(conformPasswordField.value,conformPasswordField,conformPasswordWarning,"Conform Password")
     conformPasswordValid= false;
     }
-    // comparePassword(conformPasswordField.value,conformPasswordField,conformPasswordWarning);
+ 
 
     if(numberField.value.length < 10 && phoneValid) {
         numberField.classList.add('redBorder');
@@ -246,7 +251,6 @@ function formSubmitHandler(e) {
     }
 
     if(!phoneValid || !nameValid || !UsernameValid || !passwordValid || !conformPasswordValid || !emailValid) {
-       alert("Fill the form correctly");
        nameValid = true;
        emailValid = true;  
        UsernameValid = true;

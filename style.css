@@ -125,6 +125,9 @@ form .input-box span.details{
   font-size: .75rem;
   text-align: right;
  }
+ .warning {
+  height: .85rem;
+ }
  @media(max-width: 584px){
  .container{
   max-width: 100%;
